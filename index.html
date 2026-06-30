@@ -2,49 +2,49 @@
 <html lang="sr">
 <head>
     <meta charset="UTF-8">
-    <title>Univerzalni Ćirilični Preslovljivač</title>
+    <title>Універзалні Цьірілічні пресловльівач</title>
 </head>
 <body>
 
-    <h1>Univerzalni Ćirilični Preslovljivač</h1>
+    <h1>Універзалні Цьірілічні пресловльівач</h1>
     <hr>
 
     <div>
-        <label for="languageSelect"><b>1. Izaberi jezik / jezičku grupu:</b></label><br>
+        <label for="languageSelect"><b>1. Ізабері єзік / єзічку групу:</b></label><br>
         <select id="languageSelect">
-            <option value="balkan">Balkanski jezici (MKD / SLO / CG / BHS)</option>
-            <option value="bulgarian">Bugarski (BG)</option>
-            <option value="greek">Grčki (GR)</option>
-            <option value="czech_slovak">Češki / Slovački (CZ / SK)</option>
-            <option value="polish_sorbian">Poljski / Lužičkosrpski (PL)</option>
-            <option value="romance_cyrillic">Rumunska ćirilica (RO)</option>
-            <option value="eastern">Istočna ćirilica (RUS / BLR)</option>
-            <option value="caucasian">Kavkaski jezici</option>
-            <option value="uralic">Uralski jezici</option>
-            <option value="kazakh">Kazahstanski (KZ)</option>
-            <option value="mongolian">Mongolski (MNG)</option>
-            <option value="iranic_central_asia">Iranski jezici (Srednja Azija)</option>
+            <option value="balkan">Балканскі єзіці (МКД / СЛО / ЦГ / БХС)</option>
+            <option value="bulgarian">Бугарскі (БГ)</option>
+            <option value="greek">Грчкі (ГР)</option>
+            <option value="czech_slovak">Чешкі / Словачкі (ЦЗ / СК)</option>
+            <option value="polish_sorbian">Польскі / Лужічкосрпскі (ПЛ)</option>
+            <option value="romance_cyrillic">Румунска цьіріліца (РО)</option>
+            <option value="eastern">Істочна цьіріліца (РУС / БЛР)</option>
+            <option value="caucasian">Кавкаскі єзіці</option>
+            <option value="uralic">Уралскі єзіці</option>
+            <option value="kazakh">Казахстанскі (КЗ)</option>
+            <option value="mongolian">Монголскі (МНГ)</option>
+            <option value="iranic_central_asia">Іранскі єзіці (Средня Азія)</option>
         </select>
     </div>
 
     <br>
 
     <div>
-        <label for="inputText"><b>2. Unesi / nalepi originalni tekst:</b></label><br>
-        <textarea id="inputText" rows="12" cols="90" placeholder="Ovde nalepi tekst za preslovljavanje..."></textarea>
+        <label for="inputText"><b>2. Унесі / налепі орігіналні текст:</b></label><br>
+        <textarea id="inputText" rows="12" cols="90" placeholder="Овде налепі текст за пресловляванє..."></textarea>
     </div>
 
     <br>
 
     <div>
-        <button id="runBtn" style="padding: 8px 16px; cursor: pointer; font-weight: bold;">Preslovi tekst ↑↓</button>
+        <button id="runBtn" style="padding: 8px 16px; cursor: pointer; font-weight: bold;">Преслові текст ↑↓</button>
     </div>
 
     <br>
 
     <div>
-        <label for="outputText"><b>3. Rezultat (Unifikovana ukrajinska ćirilica):</b></label><br>
-        <textarea id="outputText" rows="12" cols="90" readonly placeholder="Rezultat će se pojaviti ovde nakon klika na dugme..."></textarea>
+        <label for="outputText"><b>3. Резултат (Уніфікована украйінска цьіріліца):</b></label><br>
+        <textarea id="outputText" rows="12" cols="90" readonly placeholder="Резултат цье се появіті овде након кліка на дугме..."></textarea>
     </div>
 
     <script type="module">
@@ -58,7 +58,7 @@
             const outputArea = document.getElementById('outputText');
 
             if (!text.trim()) {
-                outputArea.value = "Molimo unesite tekst.";
+                outputArea.value = "Молімо унесіте текст.";
                 return;
             }
 
@@ -66,7 +66,7 @@
                 const result = transliterator.transliterate(text, languageGroup);
                 outputArea.value = result;
             } catch (error) {
-                outputArea.value = "Greška u izvršavanju:\n" + error.message;
+                outputArea.value = "Грешка у ізвршаваню:\n" + error.message;
             }
         });
     </script>
