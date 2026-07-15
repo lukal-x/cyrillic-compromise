@@ -90,10 +90,7 @@ export class UniversalTransliterator {
                 'з': 'з', 'и': 'и', 'і': 'і', 'й': 'й', 'к': 'к', 'л': 'л', 'м': 'м', 'н': 'н',
                 'о': 'о', 'п': 'п', 'р': 'р', 'с': 'с', 'т': 'т', 'у': 'у', 'ф': 'ф', 'х': 'х',
                 'ц': 'ц', 'ч': 'ч', 'ш': 'ш', 'щ': 'щ', 'ю': 'ю', 'я': 'я', 'ь': 'ь',
-                'є': 'є',
-                'ї': 'ї',
-                'ы': 'и',
-                'ъ': '’' 
+                'є': 'є', 'ї': 'ї', 'ы': 'и', 'ъ': '’'
             },
             sinitic_cyrillic: {
                 'а': 'а', 'б': 'б', 'в': 'в', 'г': 'г', 'д': 'д', 'е': 'е', 'ж': 'ж', 'з': 'з',
@@ -176,12 +173,11 @@ export class UniversalTransliterator {
         }
 
         if (languageGroup === 'greek') {
-            // PRVO ČIŠĆENJE AKCENTA PA ONDA DIGRAFI
             let cleanText = text
-                .replace(/[άά]/g, 'α').replace(/[έέ]/g, 'ε')
-                .replace(/[ήή]/g, 'η').replace(/[ίίϊΐ]/g, 'ι')
-                .replace(/[όό]/g, 'ο').replace(/[ύύϋΰ]/g, 'υ')
-                .replace(/[ώώ]/g, 'ω')
+                .replace(/[ά]/g, 'α').replace(/[έ]/g, 'ε')
+                .replace(/[ή]/g, 'η').replace(/[ίϊΐ]/g, 'ι')
+                .replace(/[ό]/g, 'ο').replace(/[ύϋΰ]/g, 'υ')
+                .replace(/[ώ]/g, 'ω')
                 .replace(/[Ά]/g, 'Α').replace(/[Έ]/g, 'Ε')
                 .replace(/[Ή]/g, 'Η').replace(/[Ί]/g, 'Ι')
                 .replace(/[Ό]/g, 'Ο').replace(/[Ύ]/g, 'Υ')
@@ -215,7 +211,10 @@ export class UniversalTransliterator {
             text = text.replace(/([БВГҐДЖЗКЛМНПРСТФХЦЧШЩ])Ё/g, '$1ЬО');
             text = text.replace(/([БВГҐДЖЗКЛМНПРСТФХЦЧШЩ])ё/g, '$1ьо');
 
-            text = text.replace(/ё/g, 'йо').replace(/Ё/g, 'Йо');
+            text = text.replace(/([А-ЯҐЄІЇЫЪЬ])Ё/g, '$1ЙО');
+            text = text.replace(/Ё([А-ЯҐЄІЇЫЪЬ])/g, 'ЙО$1');
+            text = text.replace(/Ё/g, 'Йо');
+            text = text.replace(/ё/g, 'йо');
             
             return text;
         }
