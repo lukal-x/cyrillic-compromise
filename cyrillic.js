@@ -222,14 +222,23 @@ export class UniversalTransliterator {
 
         if (languageGroup === 'romance_cyrillic') {
             return text
+                .replace(/ea\b/gi, 'я')
+                .replace(/ia\b/gi, 'я')
+                .replace(/ie\b/gi, 'є')
+                .replace(/ii\b/gi, 'ій')
+                .replace(/ia/gi, 'ія')
+                
+                .replace(/ge/gi, 'же').replace(/gi/gi, 'жі')
+                .replace(/gea/gi, 'жа').replace(/gia/gi, 'жа')
+                .replace(/ce/gi, 'че').replace(/ci/gi, 'чі')
+                .replace(/cea/gi, 'ча').replace(/cia/gi, 'ча')
+                
                 .replace(/che/gi, 'ке').replace(/chi/gi, 'кі')
                 .replace(/ghe/gi, 'ґе').replace(/ghi/gi, 'ґі')
-                .replace(/cea/gi, 'ча').replace(/cia/gi, 'ча')
-                .replace(/ce/gi, 'че').replace(/ci/gi, 'чі')
-                .replace(/gea/gi, 'джа').replace(/gia/gi, 'джа')
-                .replace(/ge/gi, 'дже').replace(/gi/gi, 'джі')
-                .replace(/c([aouAOU])/g, 'к$1').replace(/C([aouAOU])/g, 'К$1')
-                .replace(/c$/g, 'к');
+                .replace(/c([aouAOU])/g, 'к$1')
+            
+                .replace(/î/g, 'ін').replace(/î([a-z])/gi, 'і$1') // handles 'în' vs internal î
+                .replace(/â/g, 'и');
         }
         
         return text;
