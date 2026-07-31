@@ -80,10 +80,11 @@ export class UniversalTransliterator {
                 'ӣ': 'ӣ', 'ҷ': 'ҷ'
             },
             romance_cyrillic: {
-                'a': 'а', 'b': 'б', 'c': 'ц', 'd': 'д', 'e': 'е', 'f': 'ф', 'g': 'г', 'h': 'х',
-                'i': 'і', 'j': 'й', 'k': 'к', 'l': 'л', 'm': 'м', 'n': 'н', 'o': 'о', 'p': 'п',
-                'r': 'р', 's': 'с', 't': 'т', 'u': 'у', 'v': 'в', 'z': 'з',
-                'ч': 'ч', 'ш': 'ш', 'дж': 'дж'
+                'a': 'а', 'ă': 'е', 'â': 'и', 'b': 'б', 'c': 'к', 'd': 'д', 
+                'e': 'е', 'f': 'ф', 'g': 'ґ', 'h': 'х', 'i': 'і', 'î': 'ін', 
+                'j': 'ж', 'k': 'к', 'l': 'л', 'm': 'м', 'n': 'н', 'o': 'о', 
+                'p': 'п', 'r': 'р', 's': 'с', 'ș': 'ш', 'ş': 'ш', 't': 'т', 
+                'ț': 'ц', 'ţ': 'ц', 'u': 'у', 'v': 'в', 'x': 'кс', 'z': 'з'
             },
             rusyn: {
                 'а': 'а', 'б': 'б', 'в': 'в', 'г': 'г', 'ґ': 'ґ', 'д': 'д', 'е': 'е', 'ж': 'ж',
@@ -217,6 +218,18 @@ export class UniversalTransliterator {
             text = text.replace(/ё/g, 'йо');
             
             return text;
+        }
+
+        if (languageGroup === 'romance_cyrillic') {
+            return text
+                .replace(/che/gi, 'ке').replace(/chi/gi, 'кі')
+                .replace(/ghe/gi, 'ґе').replace(/ghi/gi, 'ґі')
+                .replace(/cea/gi, 'ча').replace(/cia/gi, 'ча')
+                .replace(/ce/gi, 'че').replace(/ci/gi, 'чі')
+                .replace(/gea/gi, 'джа').replace(/gia/gi, 'джа')
+                .replace(/ge/gi, 'дже').replace(/gi/gi, 'джі')
+                .replace(/c([aouAOU])/g, 'к$1').replace(/C([aouAOU])/g, 'К$1')
+                .replace(/c$/g, 'к');
         }
         
         return text;
